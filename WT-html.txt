@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>String Separator Form</title>
+</head>
+<body>
+<h1>String Separator Form</h1>
+<form action="process.php" method="post">
+<label for="inputString">Enter a String:</label><br>
+<input type="text" id="inputString" name="inputString" required><br><br>
+<label for="separator">Select a Separator:</label><br>
+<select id="separator" name="separator">
+<option value="#">#</option>
+<option value="|">|</option>
+<option value="%">%</option>
+</select><br><br>
+<label for="newSeparator">Replace with Separator:</label><br>
+<input type="text" id="newSeparator" name="newSeparator" required><br><br>
+<input type="submit" value="Submit">
+</form>
+</body>
+</html>
