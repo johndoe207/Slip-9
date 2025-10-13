@@ -1,0 +1,8 @@
+import pandas as pd
+df = pd.read_csv('winequality-red.csv')
+print("Describing the Dataset:")
+print(df.describe())
+print("\nShape of the Dataset:")
+print(df.shape)
+print("\nFirst 3 Rows of the Dataset:")
+print(df.head(3))
