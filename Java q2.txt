@@ -1,0 +1,49 @@
+interface Trackable {}
+
+class Product implements Trackable {
+    private int productId;
+    private String productName;
+    private double productCost;
+    private int productQuantity;
+    private static int objectCount = 0;
+
+    public Product() {
+        this.productId = 0;
+        this.productName = "Unknown";
+        this.productCost = 0.0;
+        this.productQuantity = 0;
+        objectCount++;
+    }
+
+    public Product(int productId, String productName, double productCost, int productQuantity) {
+        this.productId = productId;
+        this.productName = productName;
+        this.productCost = productCost;
+        this.productQuantity = productQuantity;
+        objectCount++;
+    }
+
+    public void displayProductDetails() {
+        System.out.println("Product ID: " + productId);
+        System.out.println("Product Name: " + productName);
+        System.out.println("Product Cost: $" + productCost);
+        System.out.println("Product Quantity: " + productQuantity);
+        System.out.println();
+    }
+
+    public static int getObjectCount() {
+        return objectCount;
+    }
+
+    public static void main(String[] args) {
+        Product product1 = new Product();
+        Product product2 = new Product(101, "Laptop", 1500.00, 5);
+        Product product3 = new Product(102, "Smartphone", 800.00, 10);
+
+        product1.displayProductDetails();
+        product2.displayProductDetails();
+        product3.displayProductDetails();
+
+        System.out.println("Total number of Product objects created: " + Product.getObjectCount());
+    }
+}

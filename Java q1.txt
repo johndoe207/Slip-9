@@ -1,0 +1,85 @@
+import java.util.Scanner;
+
+class Clock {
+    private int hours;
+    private int minutes;
+    private int seconds;
+    private String period;
+
+    public Clock(int hours, int minutes, int seconds, String period) {
+        if (isValidTime(hours, minutes, seconds, period)) {
+            this.hours = hours;
+            this.minutes = minutes;
+            this.seconds = seconds;
+            this.period = period;
+        } else {
+            System.out.println("Invalid time provided. Setting to default 12:00:00 AM.");
+            this.hours = 12;
+            this.minutes = 0;
+            this.seconds = 0;
+            this.period = "AM";
+        }
+    }
+
+    private boolean isValidTime(int hours, int minutes, int seconds, String period) {
+        if (hours < 1 || hours > 12) {
+            return false;
+        }
+        if (minutes < 0 || minutes >= 60) {
+            return false;
+        }
+        if (seconds < 0 || seconds >= 60) {
+            return false;
+        }
+        if (!period.equalsIgnoreCase("AM") && !period.equalsIgnoreCase("PM")) {
+            return false;
+        }
+        return true;
+    }
+
+    public void setTime(int hours, int minutes, int seconds, String period) {
+        if (isValidTime(hours, minutes, seconds, period)) {
+            this.hours = hours;
+            this.minutes = minutes;
+            this.seconds = seconds;
+            this.period = period;
+        } else {
+            System.out.println("Invalid time provided. Time not set.");
+        }
+    }
+
+    public void displayTime() {
+        System.out.printf("Current Time: %02d:%02d:%02d %s\n", hours, minutes, seconds, period.toUpperCase());
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter hours (1-12): ");
+        int hours = sc.nextInt();
+        System.out.print("Enter minutes (0-59): ");
+        int minutes = sc.nextInt();
+        System.out.print("Enter seconds (0-59): ");
+        int seconds = sc.nextInt();
+        System.out.print("Enter period (AM/PM): ");
+        String period = sc.next();
+
+        Clock clock = new Clock(hours, minutes, seconds, period);
+        clock.displayTime();
+
+        System.out.println("\nSetting new time:");
+        System.out.print("Enter hours (1-12): ");
+        hours = sc.nextInt();
+        System.out.print("Enter minutes (0-59): ");
+        minutes = sc.nextInt();
+        System.out.print("Enter seconds (0-59): ");
+        seconds = sc.nextInt();
+        System.out.print("Enter period (AM/PM): ");
+        period = sc.next();
+
+        clock.setTime(hours, minutes, seconds, period);
+        clock.displayTime();
+
+        sc.close();
+    }
+}
